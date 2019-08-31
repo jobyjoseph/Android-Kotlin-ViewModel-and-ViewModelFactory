@@ -54,6 +54,10 @@ class GameFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(GameViewModel::class.java)
         viewModel.score.observe(this, Observer { newScore -> binding.scoreText.text = newScore.toString() })
         viewModel.word.observe(this, Observer { newWord -> binding.wordText.text = newWord.toString() })
+        // Observer for the Game finished event
+        viewModel.eventGameFinish.observe(this, Observer<Boolean> { hasFinished ->
+            if (hasFinished) gameFinished()
+        })
 
 
         binding.correctButton.setOnClickListener { onCorrect() }
