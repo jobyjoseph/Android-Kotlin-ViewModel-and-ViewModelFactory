@@ -99,4 +99,10 @@ class GameViewModel : ViewModel() {
         }
         nextWord()
     }
+
+    /** Method for game completed event **/
+
+    public fun onGameFinishComplete() {
+        _eventGameFinish.value = false
+    }
 }
